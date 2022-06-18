@@ -7,6 +7,5 @@ export class Maquinaria {
     estado!: string;
     categoria!:string;
 
-    constructor(){
-    }
+    constructor(){}
 }

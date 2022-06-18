@@ -1,11 +1,9 @@
 export class Catalogo {
-    codigo!:string;
-    fechaVigencia!:string;
-    descripcion!:string;
+    codigo!: string;
+    fechaVigencia!: string;
+    descripcion!: string;
     categoriaMaquinaria!: string;
-    img!:string;
-    constructor(){
+    img!: string;
 
-    }
-
+    constructor(){}
 }
