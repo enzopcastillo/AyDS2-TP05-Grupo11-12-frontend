@@ -1,0 +1,16 @@
+#sec1{
+    background-image: url("https://blog.carsync.com/hubfs/Maquinaria-pesada.jpg");
+    background-size: cover;
+    text-align: center;
+    height: 600px;
+}
+
+#sec2{
+    height: 700px;
+}
+
+.inicio{
+    margin: auto;
+    top: 40%;
+    opacity: 0.8;
+}

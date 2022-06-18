@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { RegistrarAlquilerComponent } from './components/pages/registrar-alquiler/registrar-alquiler.component';
+import { CatalogoComponent } from './components/pages/catalogo/catalogo.component';
+import { CatalogoInicioComponent } from './components/pages/catalogo/catalogo-inicio/catalogo-inicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    RegistrarAlquilerComponent
+    RegistrarAlquilerComponent,
+    CatalogoComponent,
+    CatalogoInicioComponent
   ],
   imports: [
     BrowserModule,
