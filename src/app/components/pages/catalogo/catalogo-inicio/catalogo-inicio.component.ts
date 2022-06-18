@@ -11,12 +11,23 @@ export class CatalogoInicioComponent implements OnInit {
 
   catalogos!: Array<Catalogo>;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router) { 
+    this.catalogos = new Array<Catalogo>();
+    this.cargarCatalogo();
+  }
 
   ngOnInit(): void {
   }
 
   verCatalogo(cat: string){
     this.router.navigate(['catalogo/', cat]);
+  }
+
+  cargarCatalogo(){
+    var catalogo = new Catalogo();
+    catalogo.categoriaMaquinaria = "Agricola";
+    catalogo.codigo = "AG0622";
+    catalogo.img = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Agricultural_machinery.jpg/1200px-Agricultural_machinery.jpg";
+    this.catalogos.push(catalogo);
   }
 }

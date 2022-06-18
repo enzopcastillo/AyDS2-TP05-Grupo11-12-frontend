@@ -12,9 +12,13 @@ export class CatalogoComponent implements OnInit {
   maquinarias!:Array<Maquinaria>;
   action!:boolean;
   categoria!:string;
+  maquinaria!:Maquinaria;
 
   constructor(private router:Router ,private rout:ActivatedRoute) { 
-
+    this.maquinarias = new Array<Maquinaria>();
+    this.maquinaria = new Maquinaria();
+    this.cargarMaquinaria();
+    this.recibirDato();
   }
 
   ngOnInit(): void {
@@ -35,11 +39,20 @@ export class CatalogoComponent implements OnInit {
     });
   }
 
+  cargarMaquinaria(){
+    var maq = new Maquinaria();
+    maq.categoria= "Agricola";
+    maq.codigo = "1234";
+    maq.modelo = "RT-20184"
+    maq.imagen = "https://cdn.motor1.com/images/mgl/mZPoo/s1/4x3/asi-fueron-las-ventas-de-maquinas-agricolas-y-viales-en-2020.webp";
+    this.maquinarias.push(maq);
+  }
+
   filtrarCategoria(cat:string){
 
   }
 
-  verMaquinaria(codigo:string){
-    
+  verMaquinaria(maqui: Maquinaria){
+    this.maquinaria = maqui;
   }
 }
