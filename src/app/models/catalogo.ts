@@ -3,7 +3,8 @@ export class Catalogo {
     fechaVigencia!:string;
     descripcion!:string;
     categoriaMaquinaria!: string;
-    img!:string;
+    imagen!:string;
+
     constructor(){
 
     }

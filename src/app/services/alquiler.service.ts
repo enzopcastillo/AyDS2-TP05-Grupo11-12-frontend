@@ -9,11 +9,12 @@ import { Maquinaria } from '../models/maquinaria';
   providedIn: 'root'
 })
 export class AlquilerService {
-  url_backend = 'http://localhost:4000/api/personas';
+  url_backend = 'http://localhost:8080/catalogo/';
   
   constructor(private http: HttpClient) {}
 
   getClientes(): Observable<any>{
+    
     return this.http.get<Cliente[]>(this.url_backend);
   }
 
