@@ -9,6 +9,7 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { RegistrarAlquilerComponent } from './components/pages/registrar-alquiler/registrar-alquiler.component';
 import { CatalogoComponent } from './components/pages/catalogo/catalogo.component';
 import { CatalogoInicioComponent } from './components/pages/catalogo/catalogo-inicio/catalogo-inicio.component';
+import { RegistrarClientesComponent } from './components/pages/registrar-clientes/registrar-clientes.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CatalogoInicioComponent } from './components/pages/catalogo/catalogo-in
     FooterComponent,
     RegistrarAlquilerComponent,
     CatalogoComponent,
-    CatalogoInicioComponent
+    CatalogoInicioComponent,
+    RegistrarClientesComponent
   ],
   imports: [
     BrowserModule,

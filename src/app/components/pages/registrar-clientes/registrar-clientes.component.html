@@ -1,0 +1,53 @@
+<div class="container m-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-title text-center">
+                    <h3>REGISTRAR CLIENTE</h3>
+                </div>
+                <div class="card-body">
+                    <form #form="ngForm" (ngSubmit)="registrarCliente(form)">
+                        <div class="form-group">
+                          <label for="exampleInputApellido"><strong>Ingrese el apellido:</strong></label>
+                          <input [(ngModel)]="cliente.apellido" name="apellido" id="apellido" required #apellido="ngModel" type="text" class="form-control" id="exampleInputApellido">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputNombre"><strong>Ingrese el nombre:</strong></label>
+                          <input [(ngModel)]="cliente.nombre" name="nombre" id="nombre" required #nombre="ngModel" type="text" class="form-control" id="exampleInputNombre">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputTipoDNI"><strong>Ingrese el tipo de documento:</strong></label>
+                          <input [(ngModel)]="cliente.tipoDocumento" name="tipoDocumento" id="tipoDocumento" required #tipoDocumento="ngModel" type="text" class="form-control" id="exampleInputTipoDNI">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputNumeroDNI"><strong>Ingrese el numero de documento:</strong></label>
+                          <input [(ngModel)]="cliente.numDocumento" name="numDocumento" id="numDocumento" required #numDocumento="ngModel" type="text" class="form-control" id="exampleInputNumeroDNI">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputTelefono"><strong>Ingrese el telefono:</strong></label>
+                          <input [(ngModel)]="cliente.telefono" name="telefono" id="telefono" required #telefono="ngModel" type="text" class="form-control" id="exampleInputTelefono">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputRazon"><strong>Ingrese la razon social:</strong></label>
+                          <input [(ngModel)]="cliente.razonSocial" name="razonSocial" id="razonSocial" required #razonSocial="ngModel" type="text" class="form-control" id="exampleInputRazon">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPostal"><strong>Ingrese el codigo postal:</strong></label>
+                          <input [(ngModel)]="cliente.codigoPostal" name="codigoPostal" id="codigoPostal" required #codigoPostal="ngModel" type="text" class="form-control" id="exampleInputPostal">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputDireccion"><strong>Ingrese la direccion:</strong></label>
+                          <input [(ngModel)]="cliente.direccion" name="direccion" id="direccion" required #direccion="ngModel" type="text" class="form-control" id="exampleInputDireccion">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputAlta"><strong>Ingrese la fecha de alta:</strong></label>
+                          <input [(ngModel)]="cliente.fechaAlta" name="fechaAlta" id="fechaAlta" required #fechaAlta="ngModel" type="date" class="form-control" id="exampleInputAlta">
+                        </div>
+                        <br>
+                        <button [disabled]="form.invalid" type="submit" class="btn btn-primary">REGISTRAR</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
