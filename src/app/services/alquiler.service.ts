@@ -21,6 +21,7 @@ export class AlquilerService {
 
   createCliente(cliente: Cliente): Observable<any>{
     return this.http.post(this.url_alquileres, cliente + 'guardar');
+
   }
 
   getMaquinarias(): Observable<any>{

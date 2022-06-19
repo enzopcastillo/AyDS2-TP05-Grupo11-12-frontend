@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Maquinaria } from 'src/app/models/maquinaria';
+import { MaquinariaService } from 'src/app/services/maquinaria.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -14,7 +15,7 @@ export class CatalogoComponent implements OnInit {
   categoria!:string;
   maquinaria!:Maquinaria;
 
-  constructor(private router:Router ,private rout:ActivatedRoute) { 
+  constructor(private router:Router ,private rout:ActivatedRoute, private maqService: MaquinariaService) { 
     this.maquinarias = new Array<Maquinaria>();
     this.maquinaria = new Maquinaria();
     this.cargarMaquinaria();
@@ -32,7 +33,6 @@ export class CatalogoComponent implements OnInit {
         }
         else {
           this.action = true;
-          this.filtrarCategoria(params['categoria']);
           this.categoria = params['categoria'];
         }
       }
@@ -40,16 +40,21 @@ export class CatalogoComponent implements OnInit {
   }
 
   cargarMaquinaria(){
-    var maq = new Maquinaria();
-    maq.categoria= "Agricola";
-    maq.codigo = "1234";
-    maq.modelo = "RT-20184"
-    maq.imagen = "https://cdn.motor1.com/images/mgl/mZPoo/s1/4x3/asi-fueron-las-ventas-de-maquinas-agricolas-y-viales-en-2020.webp";
-    this.maquinarias.push(maq);
-  }
-
-  filtrarCategoria(cat:string){
-
+    this.maqService.getMaquinarias().subscribe((m)=>{
+      for(var i=0; i < m.length; i++){
+        var maq = new Maquinaria();
+        if(this.action == true){
+          if(m[i].categoria === this.categoria){
+            maq = m[i];
+            this.maquinarias.push(maq);
+          }
+        }
+        else{
+          maq = m[i];
+          this.maquinarias.push(maq);
+        }
+      }
+    });
   }
 
   verMaquinaria(maqui: Maquinaria){

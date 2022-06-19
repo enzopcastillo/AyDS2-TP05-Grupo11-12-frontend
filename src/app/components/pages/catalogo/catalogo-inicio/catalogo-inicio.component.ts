@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Catalogo } from 'src/app/models/catalogo';
+import { CatalogoService } from 'src/app/services/catalogo.service';
 
 @Component({
   selector: 'app-catalogo-inicio',
@@ -11,7 +12,7 @@ export class CatalogoInicioComponent implements OnInit {
 
   catalogos!: Array<Catalogo>;
 
-  constructor(private router:Router) { 
+  constructor(private router:Router, private catServ:CatalogoService) { 
     this.catalogos = new Array<Catalogo>();
     this.cargarCatalogo();
   }
@@ -24,10 +25,14 @@ export class CatalogoInicioComponent implements OnInit {
   }
 
   cargarCatalogo(){
-    var catalogo = new Catalogo();
-    catalogo.categoriaMaquinaria = "Agricola";
-    catalogo.codigo = "AG0622";
-    catalogo.img = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Agricultural_machinery.jpg/1200px-Agricultural_machinery.jpg";
-    this.catalogos.push(catalogo);
+    this.catServ.getCatalogos().subscribe((cat) => {
+      console.log(cat);
+      for (var i=0; i< cat.length; i++){
+        var catalogo = new Catalogo();
+        catalogo = cat[i];
+        this.catalogos.push(catalogo);
+      }
+    })
+
   }
 }
