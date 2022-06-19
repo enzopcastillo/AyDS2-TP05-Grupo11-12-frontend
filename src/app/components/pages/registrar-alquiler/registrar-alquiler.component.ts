@@ -52,6 +52,15 @@ export class RegistrarAlquilerComponent implements OnInit {
 
   registrarAlquiler(form: NgForm){
     console.log(form.value);
+    this.alquilerService.createAlquiler(form.value).subscribe(
+      (result)=>{
+        this.getAlquileres();
+        this.resetForm(form);
+      }
+    )
   }
 
+  resetForm(form: NgForm){
+    form.reset();
+  }
 }

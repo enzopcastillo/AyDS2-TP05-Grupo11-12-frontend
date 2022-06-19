@@ -19,6 +19,10 @@ export class AlquilerService {
     return this.http.get<Cliente[]>(this.url_clientes);
   }
 
+  createCliente(cliente: Cliente): Observable<any>{
+    return this.http.post(this.url_alquileres, cliente + 'guardar');
+  }
+
   getMaquinarias(): Observable<any>{
     return this.http.get<Maquinaria[]>(this.url_maquinarias);
   }
@@ -30,4 +34,5 @@ export class AlquilerService {
   createAlquiler(alquiler: Alquiler): Observable<any>{
     return this.http.post(this.url_alquileres, alquiler + 'guardar');
   }
+
 }
