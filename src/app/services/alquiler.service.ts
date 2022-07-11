@@ -9,9 +9,9 @@ import { Maquinaria } from '../models/maquinaria';
   providedIn: 'root'
 })
 export class AlquilerService {
-  url_clientes = 'http://localhost:8080/clientes/lista';
-  url_maquinarias = 'http://localhost:8080/maquinarias/lista';
-  url_alquileres = 'http://localhost:8080/alquiler/';
+  url_clientes = 'http://localhost:4000/api/clientes';
+  url_maquinarias = 'http://localhost:4000/api/maquinarias';
+  url_alquileres = 'http://localhost:4000/api/alquileres';
 
   constructor(private http: HttpClient) {}
 
@@ -20,8 +20,7 @@ export class AlquilerService {
   }
 
   createCliente(cliente: Cliente): Observable<any>{
-    return this.http.post(this.url_alquileres, cliente + 'guardar');
-
+    return this.http.post(this.url_alquileres, cliente);
   }
 
   getMaquinarias(): Observable<any>{
@@ -29,11 +28,11 @@ export class AlquilerService {
   }
 
   getAlquileres(): Observable<any>{
-    return this.http.get<Alquiler[]>(this.url_alquileres + 'lista');
+    return this.http.get<Alquiler[]>(this.url_alquileres);
   }
 
   createAlquiler(alquiler: Alquiler): Observable<any>{
-    return this.http.post(this.url_alquileres, alquiler + 'guardar');
+    return this.http.post(this.url_alquileres, alquiler);
   }
 
 }

@@ -6,19 +6,17 @@
                     <h3>REGISTRAR ALQUILER</h3>
                 </div>
                 <div class="card-body">
-                    <form #form="ngForm" (ngSubmit)="registrarAlquiler(form)">
+                    <form #form="ngForm" (ngSubmit)="createAlquiler(form)">
                         <div class="form-group">
                           <label for="exampleInputCliente"><strong>Seleccione el cliente:</strong></label>
                           <select [(ngModel)]="alquiler.cliente" name="cliente" id="cliente" class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
+                            <option *ngFor="let item of clientes" [ngValue]="item" [selected]="item">{{item.apellido}} {{item.nombre}}</option>
                           </select>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputMaquinaria"><strong>Seleccione la maquinaria:</strong></label>
                           <select [(ngModel)]="alquiler.maquinaria" name="maquinaria" id="maquinaria" class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
+                            <option *ngFor="let item of maquinarias" [ngValue]="item" [selected]="item">{{item.marca}}{{item.modelo}}</option>
                           </select>
                         </div>
                         <div class="form-group">
@@ -34,7 +32,41 @@
                           <input [(ngModel)]="alquiler.precio" name="precio" id="precio" required #precio="ngModel" type="number" class="form-control" id="exampleInputPrecio" placeholder="Ingrese el precio del alquiler.">
                         </div>
                         <br>
-                        <button [disabled]="form.invalid" type="submit" class="btn btn-primary">REGISTRAR</button>
+                        <button [disabled]="form.invalid" type="submit" (click)="openPopup()" class="btn btn-primary">REGISTRAR</button>
+                        <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title">Comprobante</h4>
+                              </div>
+                              <div class="modal-body">
+                                <ul class="list-group">
+                                  <!--
+                                  <li class="list-group-item"><strong>Cliente:</strong>
+                                    <ul >
+                                      <li *ngFor="let item of alquileres">{{item.cliente.nombre}}</li>
+                                    </ul>
+                                  </li>
+                                  <li class="list-group-item"><strong>Maquinaria:</strong>
+                                    <ul >
+                                      <li *ngFor="let item of alquileres">{{item.maquinaria.marca}}</li>
+                                    </ul>
+                                  </li>
+                                  -->
+                                  <li class="list-group-item"><strong>Cliente:</strong> {{alquiler.cliente}}</li>
+                                  <li class="list-group-item"><strong>Maquinaria:</strong> {{alquiler.maquinaria}}</li>                               
+                                  <li class="list-group-item"><strong>Fecha de alquiler:</strong> {{alquiler.fechaAlquiler| date: 'dd/MM/yyyy'}}</li>
+                                  <li class="list-group-item"><strong>Fecha de devolucion:</strong> {{alquiler.fechaDevolucion | date: 'dd/MM/yyyy'}}</li>
+                                  <li class="list-group-item"><strong>Precio:</strong> {{alquiler.precio | currency: 'USD'}}</li>
+                                </ul>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-danger float-start">IMPRIMIR</button>
+                                <button type="button" class="btn btn-danger float-end" (click)="closePopup()">CERRAR</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                     </form>
                 </div>
             </div>

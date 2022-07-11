@@ -1,4 +1,5 @@
 export class Maquinaria {
+    _id!: string;
     codigo!: string;
     marca!: string;
     modelo!: string;

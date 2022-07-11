@@ -8,7 +8,7 @@ import { Maquinaria } from '../models/maquinaria';
 })
 export class MaquinariaService {
 
-  urlBase = "http://localhost:8080/maquinaria"
+  urlBase = "http://localhost:4000/api/maquinarias"
 
   constructor(private http: HttpClient) { }
 

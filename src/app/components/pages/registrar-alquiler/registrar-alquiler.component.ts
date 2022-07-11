@@ -11,10 +11,10 @@ import { AlquilerService } from 'src/app/services/alquiler.service';
   styleUrls: ['./registrar-alquiler.component.css']
 })
 export class RegistrarAlquilerComponent implements OnInit {
-  alquiler: Alquiler;
-  alquileres: Array<Alquiler>;
-  clientes: Array<Cliente>;
-  maquinarias: Array<Maquinaria>;
+  alquiler!: Alquiler;
+  alquileres!: Array<Alquiler>;
+  clientes!: Array<Cliente>;
+  maquinarias!: Array<Maquinaria>;
 
   constructor(private alquilerService: AlquilerService) {
     this.alquiler = new Alquiler;
@@ -24,6 +24,8 @@ export class RegistrarAlquilerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getClientes();
+    this.getMaquinarias();
   }
 
   getClientes(){
@@ -50,6 +52,15 @@ export class RegistrarAlquilerComponent implements OnInit {
     )
   }
 
+  createAlquiler(form: NgForm){
+    this.alquilerService.createAlquiler(form.value).subscribe(
+      (result)=>{
+        console.log(result);
+      }
+    )
+  }
+
+  /*
   registrarAlquiler(form: NgForm){
     console.log(form.value);
     this.alquilerService.createAlquiler(form.value).subscribe(
@@ -59,8 +70,18 @@ export class RegistrarAlquilerComponent implements OnInit {
       }
     )
   }
+  */
 
   resetForm(form: NgForm){
     form.reset();
+  }
+
+  displayStyle = "none";
+
+  openPopup() {
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
   }
 }

@@ -1,15 +1,18 @@
 export class Cliente {
-    idCliente: number;
-    apellido: string;
-    nombre: string;
-    tipoDocumento: string;
-    numDocumento: string;
-    telefono: string;
-    razonSocial: string;
-    codigoPostal: string;
-    direccion: string;
-    fechaAlta: string;
+    _id!: string;
+    apellido!: string;
+    nombre!: string;
+    tipoDocumento!: string;
+    numDocumento!: string;
+    telefono!: string;
+    razonSocial!: string;
+    codigoPostal!: string;
+    direccion!: string;
+    fechaAlta!: string;
 
+    constructor(){}
+
+    /*
     constructor(idCliente=0, apellido='', nombre='', tipoDocumento='', numDocumento='', telefono='', razonSocial='', codigoPostal='', direccion='', fechaAlta=''){
         this.idCliente = idCliente;
         this.apellido = apellido;
@@ -22,4 +25,5 @@ export class Cliente {
         this.direccion = direccion;
         this.fechaAlta = fechaAlta;
     }
+    */
 }
